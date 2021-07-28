@@ -1,8 +1,10 @@
-from flask import Blueprint
+from flask import (Blueprint, render_template, request, flash, redirect,url_for)
+from .imagewalk import imageWalk
 
 views = Blueprint('views', __name__)
 
 @views.route('/')
 def home():
-    return "<h1>Test</h1>"
+    imgList = imageWalk()
+    return render_template('home.html',filepath =imgList[0])
 
