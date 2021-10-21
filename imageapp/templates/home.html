@@ -2,6 +2,41 @@
 
 {% block content %}
 
-<img src="{{url_for('static', filename = filepath)}}" alt="{{filepath}}" width="90%" height="90%">
+    <!-- Container for Image Gallery-->
+    <div class="slideContainer">
+    {% if imgList %}
+        {% for imageFile in imgList %}
+            <div  class="mySlides">
+                
+                    <img src="{{url_for('static', filename = imageFile)}}"  alt="{{imageFile}}" width="100%">
+                
+            </div>
+        {% endfor %}
+        <!-- Next and previous buttons -->
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
 
+        <!-- Image text -->
+        <div class="caption-container">
+            <p id="caption"> Images by Someone</p>
+        </div>
+        
+        <!--
+        <div class="row">
+        
+        {% for imageFile in imgList %}
+           
+                <div class="column">
+                    <img class="row" src="{{url_for('static', filename = imageFile)}}" alt="{{imageFile}}" style="width:100%" onclick="currentSlide(1)">
+                </div>
+            
+        {% endfor %}
+        </div>
+        -->
+   {% endif %} 
+   </div>
+   <script
+            type="text/javascript"
+            src="{{ url_for('static', filename='js/slideshow.js') }}"
+    ></script>
 {% endblock %}

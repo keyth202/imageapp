@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="static/style.css">
 
          -->
-
+         
         <link
             rel="stylesheet"
             href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -21,7 +21,8 @@
             href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
             crossorigin="anonymous"
         />
-
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/mainpage.css') }}">
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/slideshow.css') }}">
         <title>ImageApp | {{ title }}</title>
         <meta name="description" content="Cobra Bank {{ title }} Page">
     </head>
@@ -41,16 +42,23 @@
                 <div class="navbar-nav">    
 
                         <a class="nav-item nav-link" id="home" href="/home">Home</a>
-                        <a class="nav-item nav-link" id="logout" href="/logout">Logout</a>
-
+                        <a class="nav-item nav-link" id="bio" href="/bio">Bio</a>
+                        <a class="nav-item nav-link" id="portfolio" href="/portfolio">Portfolio</a>
+                        <a class="nav-item nav-link notauth" id="login" href="/login">Login</a>
+                        <a class="nav-item nav-link notauth" id="signUp" href="/register">Register</a>
+                        <a class="nav-item nav-link auth" id="logout" href="/logout">Logout</a>
+                        <a class="nav-item nav-link" id="store" href="/store">Store</a>
            
 
-                        <a class="nav-item nav-link" id="login" href="/login">Login</a>
-                        <a class="nav-item nav-link" id="signUp" href="/register">Register</a>
+                        
 
                 </div>
             </div>
+            <div>
+                <img class="logo" src="{{ url_for('static',filename='/logo/logo.jpg') }}">
+            </div>
         </nav>
+        
 
         {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
@@ -78,9 +86,10 @@
             {% endif %}
         {% endwith %}
 
-        <div class="container">{% block page_title %}<h1 align="center">Image App</h1>{% endblock %}</div>
+        <div>{% block page_title %}<h1 align="center">Image App</h1>{% endblock %}</div>
 
-        <div class="container" maxwidth="1000px" maxheight="1000px">{% block content %}{% endblock %}</div>
+        <!--<div class="container" maxwidth="1000px" maxheight="1000px"></div>-->
+            {% block content %}{% endblock %}
 
         <script
             src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -98,9 +107,11 @@
             crossorigin="anonymous"
         ></script>
 
+    
         <script
             type="text/javascript"
-            src="{{ url_for('static', filename='index.js') }}"
+            src="{{ url_for('static', filename='js/details.js') }}"
         ></script>
+    
     </body>
 </html>
